@@ -1,0 +1,83 @@
+{
+	"name": "cumulus-gutenberg/donut-graph",
+	"apiVersion": 2,
+	"title": "Donut Graph",
+	"description": "A simple donut graph block",
+	"keywords": ["graph", "chart", "donut", "doughnut"],
+	"icon": {
+		"src": "marker",
+		"foreground": "#00588d"
+	},
+	"category": "cmls",
+	"attributes": {
+		"blockId": {
+			"type": "string"
+		},
+		"width": {
+			"type": "string",
+			"default": "100px"
+		},
+		"percent": {
+			"type": "number",
+			"default": 35
+		},
+		"rotation": {
+			"type": "number",
+			"default": 0
+		},
+		"strokeWidth": {
+			"type": "number",
+			"default": 10
+		},
+		"colorActive": {
+			"type": "string",
+			"default": "#00588d"
+		},
+		"colorInactive": {
+			"type": "string",
+			"default": "#eeeeee"
+		},
+		"showPercentLabel": {
+			"type": "boolean",
+			"default": true
+		},
+		"percentLabelColor": {
+			"type": "string",
+			"default": null
+		},
+		"percentLabelFontSize": {
+			"type": "string",
+			"default": "1em"
+		},
+		"percentLabelFontWeight": {
+			"type": "string",
+			"default": null
+		},
+		"percentLabelFontStyle": {
+			"type": "string",
+			"default": null
+		}
+	},
+	"supports": {
+		"align": true,
+		"anchor": true,
+		"className": true,
+		"color": {
+			"gradients": true
+		},
+		"spacing": {
+			"padding": true,
+			"margin": true
+		},
+		"typography": {
+			"align": false,
+			"fontSize": true,
+			"lineHeight": false,
+			"fontWeight": true,
+			"textTransform": false,
+			"__experimentalFontWeight": true,
+			"__experimentalFontStyle": true,
+			"__experimentalTextTransform": false
+		}
+	}
+}
