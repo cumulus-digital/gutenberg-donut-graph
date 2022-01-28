@@ -3,7 +3,7 @@
 	"apiVersion": 2,
 	"title": "Donut Graph",
 	"description": "A simple donut graph block",
-	"keywords": ["graph", "chart", "donut", "doughnut"],
+	"keywords": ["graph", "chart", "doughnut"],
 	"icon": {
 		"src": "marker",
 		"foreground": "#00588d"
@@ -66,7 +66,6 @@
 			"gradients": true
 		},
 		"spacing": {
-			"padding": true,
 			"margin": true
 		},
 		"typography": {
