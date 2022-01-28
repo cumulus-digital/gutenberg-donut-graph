@@ -8,7 +8,7 @@ namespace CUMULUS\Gutenberg\DonutGraph;
  * GitHub Plugin URI: https://github.com/cumulus-digital/gutenberg-donut-graph
  * Primary Branch: main
  * Description: A simple donut graph block
- * Version: 0.0.3
+ * Version: 0.0.4
  * Author: vena
  * License: UNLICENSED
  */
