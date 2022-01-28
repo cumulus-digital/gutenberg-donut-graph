@@ -2,12 +2,10 @@
 
 namespace CUMULUS\Gutenberg\DonutGraph;
 
-use WP_Query;
-
 /*
  * Plugin Name: Gutenberg Donut Graph
- * Plugin URI: https://github.com/cumulus-digital/gutenberg-donut-graph/
- * GitHub Plugin URI: https://github.com/cumulus-digital/gutenberg-donut-graph/
+ * Plugin URI: https://github.com/cumulus-digital/gutenberg-donut-graph
+ * GitHub Plugin URI: https://github.com/cumulus-digital/gutenberg-donut-graph
  * Primary Branch: main
  * Description: A simple donut graph block
  * Version: 0.0.1
@@ -45,7 +43,6 @@ function GUID() {
 
 // Editor Assets
 function editor_assets() {
-
 	\wp_enqueue_style(
 		'gutenberg_donut_graph-css',
 		\plugins_url( 'build/global.css', __FILE__ )
