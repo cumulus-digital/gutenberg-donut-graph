@@ -1,7 +1,10 @@
-.donut-graph {
-	position: relative;
+.wp-block-cumulus-gutenberg-donut-graph {
 	width: var(--width);
 	height: var(--width);
+	margin: 0 auto;
+	position: relative;
+}
+.donut-graph {
 
 	svg {
 		width: 100%;

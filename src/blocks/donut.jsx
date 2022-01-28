@@ -42,23 +42,16 @@ const {
 } = wp.blockEditor;
 
 const svgBlob = (attributes) => {
-	let styleAttr = {
-		'--width': '' + attributes.width,
-		'--percent': '' + attributes.percent,
-		'--rotation': '' + attributes.rotation + 'deg',
-		'--stroke-width': '' + attributes.strokeWidth,
-		'--color-inactive': '' + attributes.colorInactive,
-		'--color-active': '' + attributes.colorActive
-	};
 	return (
 		<div
 			className={`donut-graph ${attributes.showPercentLabel ? 'show-label' : ''}`}
-			style={styleAttr}
+			data-percent={attributes.percent}
 			data-width={attributes.width}
 			data-percent={attributes.percent}
 			data-stroke-width={attributes.strokeWidth}
 			data-color-inactive={attributes.colorInactive}
 			data-color-active={attributes.colorActive}
+			data-rotation={attributes.rotation + 'deg'}
 		>
 			<svg
 				xmlns="http://www.w3.org/2000/svg"
@@ -86,6 +79,25 @@ const svgBlob = (attributes) => {
 	);
 };
 
+const setBlockProps = (attributes) => {
+	let ret = {};
+	ret.style = {
+		'--width': '' + attributes.width,
+		'--percent': '' + attributes.percent,
+		'--rotation': '' + attributes.rotation + 'deg',
+		'--stroke-width': '' + attributes.strokeWidth,
+		'--color-inactive': '' + attributes.colorInactive,
+		'--color-active': '' + attributes.colorActive
+	};
+	ret['data-width'] = attributes.width;
+	ret['data-percent'] = attributes.percent;
+	ret['data-stroke-width'] = attributes.strokeWidth;
+	ret['data-color-inactive'] = attributes.colorInactive;
+	ret['data-color-active'] = attributes.colorActive;
+	ret['data-rotation'] = attributes.rotation + 'deg';
+	return ret;
+};
+
 registerBlockType(metadata.name, {
 	...metadata,
 
@@ -95,7 +107,7 @@ registerBlockType(metadata.name, {
 			setAttributes({ blockId: clientId });
 		}
 		const defaults = metadata.attributes;
-		const blockProps = useBlockProps();
+		const blockProps = useBlockProps(setBlockProps(attributes));
 
 		const updateTypography = (key, val) => {
 			let newTypo = {};
@@ -128,7 +140,7 @@ registerBlockType(metadata.name, {
 								onChange={(val) => setAttributes({ showPercentLabel: val })}
 							/>
 
-							<p>
+							<div>
 								<UnitControl
 									label="Graph Size"
 									labelPosition="side"
@@ -142,7 +154,7 @@ registerBlockType(metadata.name, {
 									]}
 									onChange={(val) => setAttributes({ width: val })}
 								/>
-							</p>
+							</div>
 
 							<RangeControl
 								label="Stroke Width"
@@ -155,13 +167,13 @@ registerBlockType(metadata.name, {
 								onChange={(val) => setAttributes({ strokeWidth: val })}
 							/>
 
-							<p>
+							<div>
 								<AnglePickerControl
 									label="Initial Position"
 									value={attributes.rotation}
 									onChange={(val) => setAttributes({ rotation: val })}
 								/>
-							</p>
+							</div>
 
 							<RangeControl
 								label="Percent Active"
@@ -225,10 +237,11 @@ registerBlockType(metadata.name, {
 	},
 
 	save: (props) => {
-		const blockProps = useBlockProps.save();
+		const { attributes } = props;
+		const blockProps = useBlockProps.save(setBlockProps(attributes));
 		return (
 			<div {...blockProps}>
-				{svgBlob(props.attributes)}
+				{svgBlob(attributes)}
 			</div>
 		);
 	}
