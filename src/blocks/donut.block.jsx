@@ -25,9 +25,11 @@ const {
 export const donutBlock = {
 	edit: (props) => {
 		const { attributes, setAttributes, clientId } = props;
+		/*
 		if (!attributes.blockId) {
 			setAttributes({ blockId: clientId });
 		}
+		*/
 		const defaults = metadata.attributes;
 		const blockProps = useBlockProps(setDonutProps(attributes));
 
